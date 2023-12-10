@@ -1,0 +1,21 @@
+Ejecutable Java que produce y consume de kafka a través de un tópico.
+
+Kafka está instalado y corriendo en una VM de Oracle Virtual Box y se accede
+redireccionando el puerto 9092 desde Oracle Virtual Box.
+
+Kafka server tiene que tener configurados los advertised listeners en localhost:9092
+para que además un cliente se pueda conectar a producir y/o consumir. La configuración
+está en la carpeta Kafka-server, dentro del fichero server.properties.
+
+Kafka ha sido instalado y puesto en funcionamiento siguiente esta página de apache:
+https://kafka.apache.org/quickstart
+
+El código de Java se ha construido siguiente esta página:
+https://dzone.com/articles/develop-a-java-app-with-kafka
+
+Las pruebas a realizar son:
+- Producir mensaje:
+    http://localhost:8080/kafka/produce?message=Este es el primer mensaje de la app
+
+- Consumir mensajes:
+    http://localhost:8080/kafka/messages
