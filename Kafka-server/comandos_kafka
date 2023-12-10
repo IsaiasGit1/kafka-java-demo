@@ -1,0 +1,47 @@
+Una vez instalado, cada vez que arrancamos la VM de Oracle VB
+
+ARRANQUE DE ZOOKEEPER Y KAFKA
+========================
+
+cd /opt/kafka_2.13-3.6.0
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/zookeeper-server-stop.sh
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-server-start.sh config/server.properties
+bin/kafka-server-stop.sh
+
+
+LISTADO Y CREACION DE TOPICOS
+========================
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+
+ARRANQUE DE PRODUCTOR Y CONSUMIDOR EN CONSOLA
+========================
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-console-producer.sh --topic <topic-name> --broker-list localhost:9092
+bin/kafka-console-producer.sh --topic quickstart-events --broker-list localhost:9092
+
+cd /opt/kafka_2.13-3.6.0
+bin/kafka-console-consumer.sh --topic <topic-name> --from-beginning --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+
+CONSUMER. LISTADO Y POSICIÓN DE CONSUMO (OFFSET Y LAG)
+==============================================
+- list
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+
+- consumer
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group <my-group>
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group kafka-sandbox
